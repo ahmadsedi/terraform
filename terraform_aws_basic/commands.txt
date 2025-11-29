@@ -47,3 +47,7 @@ terraform apply
 # and update the tags on the security group
 terraform plan -out="tags.tfplan"
 terraform apply tags.tfplan
+
+
+67
+
