@@ -10,10 +10,16 @@ variable "vpc_name" {
   default     = "terraform.vpc"
 }
 
-variable "subnet_cidr" {
+variable "pub_subnet_cidr" {
   type        = string
-  description = "(Optional) CIDR block for the subnet"
-  default     = "10.0.0.0/24"
+  description = "(Optional) CIDR block for the public subnet"
+  default     = "10.0.1.0/24"
+}
+
+variable "pri_subnet_cidr" {
+  type        = string
+  description = "(Optional) CIDR block for the private subnet"
+  default     = "10.0.2.0/24"
 }
 
 variable "availability_zone" {
@@ -32,6 +38,18 @@ variable "igw_name" {
   type        = string
   description = "The name of the Internet Gateway"
   default     = "myIGW"
+}
+
+variable "region" {
+  type        = string
+  description = "AWS region to deploy resources"
+  default     = "us-east-1"
+}
+
+variable "az" {
+  type        = string
+  description = "Availability zone in which vpc is placed in"
+  default     = "us-east-1a"
 }
 
 variable "environment" {

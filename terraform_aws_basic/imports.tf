@@ -3,17 +3,17 @@
 ##################################################################################
 
 import {
-  to = module.main.aws_vpc.this[0]
+  to = module.main.aws_vpc.main_vpc[0]
   id = "vpc-0a8b4ce0df0cda0f1" #VPC
 }
 
 import {
-  to = module.main.aws_subnet.public[0]
+  to = module.main.aws_subnet.public_subnet.public[0]
   id = "subnet-0f67734d6da807dc4" #PublicSubnet1
 }
 
 import {
-  to = module.main.aws_subnet.public[1]
+  to = module.main.aws_publi_subnet.public[1]
   id = "subnet-0244edffd826ff24e" #PublicSubnet2
 }
 

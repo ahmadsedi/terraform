@@ -23,10 +23,6 @@ module "vpc_module" {
   environment = var.environment
 }
 
-provider "aws" {
-  region = "us-east-1"
-}
-
 terraform {
   backend "s3" {
     bucket  = "terraform-demo-backend-1355"
