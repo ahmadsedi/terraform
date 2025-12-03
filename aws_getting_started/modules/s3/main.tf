@@ -7,24 +7,31 @@ locals {
 resource "aws_s3_bucket" "this" {
   bucket = var.bucket_name
   tags   = local.common_tags
+}
 
-  #enable versioning
-  versioning {
-    enabled = true
-  }
+resource "aws_s3_bucket_lifecycle_configuration" "this" {
+  bucket = aws_s3_bucket.this.id
 
   # enable lifecycle rules
-  lifecycle_rule {
+  rule {
     id      = "log"
-    enabled = true
+    status = "Enabled"  
 
-    transition {
-      days          = 30
+    noncurrent_version_transition {
+      noncurrent_days          = 30
       storage_class = "GLACIER"
     }
 
-    expiration {
-      days = 365
+    noncurrent_version_expiration {
+      noncurrent_days = 365
     }
+  }
+}
+
+resource "aws_s3_bucket_versioning" "versioning" {
+  bucket = aws_s3_bucket.this.id
+
+  versioning_configuration {
+    status = "Enabled"
   }
 }
